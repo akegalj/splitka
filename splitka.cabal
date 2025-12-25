@@ -1,0 +1,24 @@
+cabal-version: 2.2
+name: splitka
+version: 0.1.0.0
+synopsis: Splitka
+category: Web
+
+common wasm
+  if arch(wasm32)
+    ghc-options:
+      -no-hs-main
+      -optl-mexec-model=reactor
+      "-optl-Wl,--export=hs_start"
+    cpp-options:
+      -DWASM
+
+executable splitka
+  import:
+    wasm
+  main-is:
+    Main.hs
+  build-depends:
+    base, miso
+  default-language:
+    Haskell2010
