@@ -43,11 +43,11 @@ foreign export javascript "hs_start" main :: IO ()
 
 -- | `vcomp` takes as arguments the initial model, update function, view function
 app :: App Int Action
-app = vcomp 0 updateModel viewModel
-
--- app = (component 0 updateModel viewModel)
---   { styles = [ Sheet sheet ]
---   }
+app =
+  (vcomp 0 updateModel viewModel)
+    { -- FIXME: use Sheet instead and convert from css into Sheet
+      styles = [Href "https://cdn.jsdelivr.net/gh/pruger/tiny-brutalism-css/tiny-brutalism.css" True]
+    }
 
 ----------------------------------------------------------------------------
 
