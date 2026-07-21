@@ -1,3 +1,26 @@
-* for notifications https://nativescript.org/  or maybe https://cordova.apache.org/plugins/ ?
-* use sqlite/persistent/esqueleto
+input box similar as with splitwise:
+<input
+  type="text"
+  placeholder="e.g. 12.34 or 12,34"
+  pattern="^[0-9]+([.,][0-9]{1,2})?$"
+  title="Please enter a number with up to 2 decimal places (dot or comma)."
+  oninput="
+    let v = this.value;
+
+    // keep digits + dot/comma only
+    v = v.replace(/[^0-9.,]/g, '');
+
+    // allow only the first dot/comma as the decimal separator
+    v = v.replace(/[.,](?=.*[.,])/g, '');
+
+    // if a separator exists, keep only up to 2 digits after it
+    v = v.replace(/^([0-9]+)([.,])(\d{0,2}).*$/, '$1$2$3');
+
+    this.value = v;
+  "
+/>
+
 * https://blog.jim-nielsen.com/2025/dont-forget-these-html-tags/
+
+* Make second version with miso + servant + opaleye + sqlite + browser state => works offline
+  * for notifications https://nativescript.org/  or maybe https://cordova.apache.org/plugins/ ?

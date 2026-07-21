@@ -4,7 +4,14 @@ version: 0.1.0.0
 synopsis: Splitka
 category: Web
 
-common wasm
+
+flag interactive
+  default:
+    False
+  manual:
+    True
+
+common options
   if arch(wasm32)
     ghc-options:
       -no-hs-main
@@ -12,10 +19,17 @@ common wasm
       "-optl-Wl,--export=hs_start"
     cpp-options:
       -DWASM
+    if flag (interactive)
+      cpp-options:
+        -DINTERACTIVE
 
-executable splitka
+  if arch(javascript)
+     ld-options:
+       -sEXPORTED_RUNTIME_METHODS=HEAP8
+
+executable app
   import:
-    wasm
+    options
   main-is:
     Main.hs
   build-depends:
