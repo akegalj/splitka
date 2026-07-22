@@ -28,6 +28,7 @@ common options
        -sEXPORTED_RUNTIME_METHODS=HEAP8
 
 executable app
+  hs-source-dir: src
   import:
     options
   main-is:
@@ -36,3 +37,5 @@ executable app
     base, miso
   default-language:
     Haskell2010
+  other-modules:
+    CSS.Bulma

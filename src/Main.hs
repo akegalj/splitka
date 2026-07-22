@@ -8,9 +8,10 @@ module Main where
 
 ----------------------------------------------------------------------------
 import Miso
-import Miso.Html (body_, br_, button_, div_, doctype_, head_, html_, link_, meta_, onClick, span_, title_)
+import Miso.Html (body_, br_, button_, div_, doctype_, head_, html_, link_, meta_, onClick, span_, title_, style_)
 import Miso.Html.Property (charset_, class_, classes_, content_, href_, name_, rel_)
 import Miso.Lens
+import CSS.Bulma (bulma_1_0_4)
 
 ----------------------------------------------------------------------------
 
@@ -75,12 +76,11 @@ viewModel _props x =
         ]
     ]
  where
-  headView =
+  headView=
     [ meta_ [charset_ "utf8"]
     , meta_ [name_ "viewport", content_ "width=device-width, initial-scale=1"]
     , title_ [] ["Splitka"]
-    , -- FIXME: add stylesheet statically
-      link_ [rel_ "stylesheet", href_ "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"]
+    , style_ [] bulma_1_0_4
     ]
   bodyView =
     [ button_ [class_ "button"] ["bok"]
