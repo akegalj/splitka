@@ -84,6 +84,12 @@ viewModel _props x =
     ]
   bodyView =
     [ button_ [class_ "button"] ["bok"]
+    , div_ [classes_ ["columns", "is-mobile"]]
+        [ div_ [class_ "column"] ["1"]
+        , div_ [class_ "column"] ["1"]
+        , div_ [class_ "column"] ["1"]
+        , div_ [classes_ ["column", "has-text-right"]] ["1"]
+        ]
     ]
 
 ----------------------------------------------------------------------------
